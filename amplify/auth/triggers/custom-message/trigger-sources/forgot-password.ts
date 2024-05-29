@@ -1,28 +1,28 @@
-import { CustomMessageForgotPasswordTriggerEvent } from "aws-lambda";
+import { CustomMessageForgotPasswordTriggerEvent } from "aws-lambda"
 
-import { EventProccesor, Locale } from "../types";
-import { forgotPasswordResponse } from "../responses";
+import { EventProccesor, Locale } from "../types"
+import { forgotPasswordResponse } from "../responses"
 
 export default class ForgotPasswordEventProccesor
-  implements EventProccesor<CustomMessageForgotPasswordTriggerEvent>
+	implements EventProccesor<CustomMessageForgotPasswordTriggerEvent>
 {
-  private event: CustomMessageForgotPasswordTriggerEvent;
+	private event: CustomMessageForgotPasswordTriggerEvent
 
-  constructor(event: CustomMessageForgotPasswordTriggerEvent) {
-    this.event = event;
-  }
+	constructor(event: CustomMessageForgotPasswordTriggerEvent) {
+		this.event = event
+	}
 
-  processEvent(): CustomMessageForgotPasswordTriggerEvent {
-    const { event } = this;
+	processEvent(): CustomMessageForgotPasswordTriggerEvent {
+		const { event } = this
 
-    const response = forgotPasswordResponse({
-      locale: event.request.userAttributes["locale"] as Locale,
-      name: event.request.userAttributes["name"],
-      code: event.request.codeParameter,
-    })
+		const response = forgotPasswordResponse({
+			locale: event.request.userAttributes["locale"] as Locale,
+			name: event.request.userAttributes["name"],
+			code: event.request.codeParameter,
+		})
 
-    event.response = response;
+		event.response = response
 
-    return event;
-  }
+		return event
+	}
 }

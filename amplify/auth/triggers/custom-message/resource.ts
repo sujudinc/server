@@ -1,7 +1,7 @@
-import { defineFunction } from '@aws-amplify/backend';
+import { defineFunction } from "@aws-amplify/backend"
 
 const customMessage = defineFunction({
-  name: 'custom-message',
-});
+	name: "custom-message",
+})
 
-export default customMessage;
+export default customMessage

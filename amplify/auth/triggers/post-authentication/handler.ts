@@ -1,10 +1,10 @@
 import type {
-  PostAuthenticationTriggerEvent,
-  PostAuthenticationTriggerHandler,
-} from "aws-lambda";
+	PostAuthenticationTriggerEvent,
+	PostAuthenticationTriggerHandler,
+} from "aws-lambda"
 
 export const handler: PostAuthenticationTriggerHandler = async (
-  event: PostAuthenticationTriggerEvent
+	event: PostAuthenticationTriggerEvent,
 ) => {
-  return event;
-};
+	return event
+}

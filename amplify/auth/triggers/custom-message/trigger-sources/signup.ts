@@ -1,28 +1,28 @@
-import { CustomMessageSignUpTriggerEvent } from "aws-lambda";
+import { CustomMessageSignUpTriggerEvent } from "aws-lambda"
 
-import { signupResponse } from "../responses";
-import { EventProccesor, Locale } from "../types";
+import { signupResponse } from "../responses"
+import { EventProccesor, Locale } from "../types"
 
 export default class SignupEventProccesor
-  implements EventProccesor<CustomMessageSignUpTriggerEvent>
+	implements EventProccesor<CustomMessageSignUpTriggerEvent>
 {
-  private event: CustomMessageSignUpTriggerEvent;
+	private event: CustomMessageSignUpTriggerEvent
 
-  constructor(event: CustomMessageSignUpTriggerEvent) {
-    this.event = event;
-  }
+	constructor(event: CustomMessageSignUpTriggerEvent) {
+		this.event = event
+	}
 
-  processEvent(): CustomMessageSignUpTriggerEvent {
-    const { event } = this;
+	processEvent(): CustomMessageSignUpTriggerEvent {
+		const { event } = this
 
-    const response = signupResponse({
-      locale: event.request.userAttributes["locale"] as Locale,
-      name: event.request.userAttributes["name"],
-      code: event.request.codeParameter,
-    })
+		const response = signupResponse({
+			locale: event.request.userAttributes["locale"] as Locale,
+			name: event.request.userAttributes["name"],
+			code: event.request.codeParameter,
+		})
 
-    event.response = response;
+		event.response = response
 
-    return event;
-  }
+		return event
+	}
 }

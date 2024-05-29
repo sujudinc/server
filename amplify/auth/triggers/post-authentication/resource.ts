@@ -1,7 +1,7 @@
-import { defineFunction } from '@aws-amplify/backend';
+import { defineFunction } from "@aws-amplify/backend"
 
 const postAuthentication = defineFunction({
-  name: 'post-authentication',
-});
+	name: "post-authentication",
+})
 
-export default postAuthentication;
+export default postAuthentication

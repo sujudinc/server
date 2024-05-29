@@ -1,10 +1,10 @@
 import type {
-  PostConfirmationTriggerEvent,
-  PostConfirmationTriggerHandler,
-} from "aws-lambda";
+	PostConfirmationTriggerEvent,
+	PostConfirmationTriggerHandler,
+} from "aws-lambda"
 
 export const handler: PostConfirmationTriggerHandler = async (
-  event: PostConfirmationTriggerEvent
+	event: PostConfirmationTriggerEvent,
 ) => {
-  return event;
-};
+	return event
+}

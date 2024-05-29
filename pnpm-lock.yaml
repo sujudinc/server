@@ -21,6 +21,9 @@ importers:
       '@types/aws-lambda':
         specifier: ^8.10.138
         version: 8.10.138
+      '@types/node':
+        specifier: ^20.12.12
+        version: 20.12.12
       aws-cdk:
         specifier: ^2
         version: 2.143.0

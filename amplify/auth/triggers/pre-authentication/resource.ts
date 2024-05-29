@@ -1,7 +1,7 @@
-import { defineFunction } from '@aws-amplify/backend';
+import { defineFunction } from "@aws-amplify/backend"
 
 const preAuthentication = defineFunction({
-  name: 'pre-authentication',
-});
+	name: "pre-authentication",
+})
 
-export default preAuthentication;
+export default preAuthentication

@@ -1,4 +1,4 @@
-import { type ClientSchema, a, defineData } from '@aws-amplify/backend';
+import { type ClientSchema, a, defineData } from "@aws-amplify/backend"
 
 /*== STEP 1 ===============================================================
 The section below creates a Todo database table with a "content" field. Try
@@ -7,21 +7,48 @@ specifies that any unauthenticated user can "create", "read", "update",
 and "delete" any "Todo" records.
 =========================================================================*/
 const schema = a.schema({
-  Todo: a
-    .model({
-      content: a.string(),
-    })
-    .authorization((allow) => [allow.guest()]),
-});
+	User: a
+		.model({
+			id: a.id().required(),
+			selfie: a.string(),
+			firstName: a.string().required(),
+			lastName: a.string().required(),
+			email: a.string().required(),
+			phoneNumber: a.string(),
+			type: a.ref("UserType").required(),
+			status: a.ref("UserStatus").required(),
+			stripeCustomerId: a.string(),
+			isOnline: a.boolean().required().default(false),
+			createdAt: a.datetime().required(),
+			updatedAt: a.datetime().required(),
+			owner: a.string().required(),
+		})
+		.authorization((allow) => {
+			return [allow.ownerDefinedIn("owner")]
+		}),
+	UserStatus: a.customType({
+		ACTIVE: a.string(),
+		BLOCKED: a.string(),
+		DEACTIVATED: a.string(),
+	}),
+	UserType: a.customType({
+		ADMIN: a.string(),
+		JAMAAH: a.string(),
+	}),
+})
 
-export type Schema = ClientSchema<typeof schema>;
+export type Schema = ClientSchema<typeof schema>
 
 export const data = defineData({
-  schema,
-  authorizationModes: {
-    defaultAuthorizationMode: 'iam',
-  },
-});
+	schema,
+	name: "RukuAPI",
+	authorizationModes: {
+		defaultAuthorizationMode: "userPool",
+		apiKeyAuthorizationMode: {
+			expiresInDays: 30,
+		}
+	},
+})
 
 /*== STEP 2 ===============================================================
 Go to your frontend source code. From your client-side code, generate a

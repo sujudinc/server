@@ -1,10 +1,10 @@
 import type {
-  PreAuthenticationTriggerEvent,
-  PreAuthenticationTriggerHandler,
-} from "aws-lambda";
+	PreAuthenticationTriggerEvent,
+	PreAuthenticationTriggerHandler,
+} from "aws-lambda"
 
 export const handler: PreAuthenticationTriggerHandler = async (
-  event: PreAuthenticationTriggerEvent
+	event: PreAuthenticationTriggerEvent,
 ) => {
-  return event;
-};
+	return event
+}

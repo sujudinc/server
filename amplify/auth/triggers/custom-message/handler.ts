@@ -1,12 +1,12 @@
 import type {
-  CustomMessageTriggerEvent,
-  CustomMessageTriggerHandler,
-} from "aws-lambda";
+	CustomMessageTriggerEvent,
+	CustomMessageTriggerHandler,
+} from "aws-lambda"
 
-import TriggerSourceStrategy from "./trigger-sources";
+import TriggerSourceStrategy from "./trigger-sources"
 
 export const handler: CustomMessageTriggerHandler = async (
-  event: CustomMessageTriggerEvent
+	event: CustomMessageTriggerEvent,
 ) => {
-  return new TriggerSourceStrategy().build(event).processEvent();
-};
+	return new TriggerSourceStrategy().build(event).processEvent()
+}
